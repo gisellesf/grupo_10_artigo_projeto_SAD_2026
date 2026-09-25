@@ -1,0 +1,1 @@
+# grupo_10_artigo_projeto_SAD_2026
