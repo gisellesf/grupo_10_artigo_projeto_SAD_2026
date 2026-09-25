@@ -1,0 +1,559 @@
+\documentclass[12pt]{article}
+
+\usepackage{sbc-template}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}
+\usepackage[pdftex]{hyperref}
+\usepackage{indentfirst}
+\usepackage{enumitem}
+
+\sloppy
+
+% ============================================================================
+% MODELO DIDÁTICO DE ARTIGO
+% Sistemas de Apoio à Decisão (SAD) + Design Science Research (DSR)
+% + Design Centrado no Usuário (DCU) + Engenharia de Software
+% + UML / Modelo de Visões 4+1 + Avaliação ISO/IEC 25010 + SUS + TAM
+%
+% Orientação geral:
+% - Substitua os textos de orientação pelo conteúdo efetivo do trabalho.
+% - Mantenha evidências para cada decisão de projeto.
+% - O artigo deve mostrar a rastreabilidade:
+%   PROBLEMA -> USUÁRIO -> REQUISITOS -> ARQUITETURA -> ARTEFATO -> AVALIAÇÃO.
+% ============================================================================
+
+\title{Título do Sistema de Apoio à Decisão: Subtítulo}
+
+\author{Nome do Autor Um\inst{1}, Nome do Autor Dois\inst{1}, \\
+Nome do Autor Três\inst{1}, Nome do Autor Quatro\inst{1}, \\
+Nome do Autor N.\inst{1}, Nome do Coorientador\inst{2},
+Gilton José Ferreira da Silva\inst{2}}
+
+\address{Departamento de Computação (DCOMP)\\
+Universidade Federal de Sergipe (UFS)\\
+Av. Marechal Rondon, s/n -- Jardim Rosa Elze -- CEP 49100-000\\
+São Cristóvão -- SE -- Brazil
+\nextinstitute
+Programa de Pós-Graduação em Ciência da Computação (PROCC)\\
+Universidade Federal de Sergipe (UFS)\\
+Av. Marechal Rondon, s/n -- Jardim Rosa Elze -- CEP 49100-000\\
+São Cristóvão -- SE -- Brazil
+\email{autor01@dcomp.ufs.br, autor02@dcomp.ufs.br}
+\email{autor03@dcomp.ufs.br, autor04@dcomp.ufs.br}
+\email{gilton@dcomp.ufs.br}
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\textbf{Context:} Briefly present the decision problem, application domain and target decision-maker.
+\textbf{Objective:} State the objective of designing, developing and evaluating the Decision Support System (DSS).
+\textbf{Method:} Report Design Science Research as the methodological framework, complemented by User-Centered Design, Software Engineering, UML and the 4+1 View Model. Mention the main evaluation instruments adopted.
+\textbf{Results:} Summarize the developed artifact and the principal technical, usability and technology-acceptance results.
+\textbf{Conclusions:} State the main practical and scientific contributions and the principal limitations.
+\end{abstract}
+
+\begin{resumo}
+\textbf{Contexto:} Apresente, em poucas frases, o domínio, o problema decisório, o tomador de decisão e por que existe necessidade de apoio computacional.
+\textbf{Objetivo:} Declare o objetivo geral, preferencialmente com os verbos ``projetar, desenvolver e avaliar'' um Sistema de Apoio à Decisão (SAD).
+\textbf{Método:} Informe a adoção da Design Science Research (DSR), integrada ao Design Centrado no Usuário (DCU), Engenharia de Software, UML e Modelo de Visões 4+1. Cite resumidamente como o artefato foi avaliado.
+\textbf{Resultados:} Sintetize o artefato construído e os principais resultados da avaliação técnica, SUS e TAM.
+\textbf{Conclusões:} Apresente a contribuição do SAD para o problema decisório e as principais limitações.
+\end{resumo}
+
+% ============================================================================
+\section{Introdução}
+\label{sec:introducao}
+
+\textbf{O que escrever nesta seção:}
+Apresente o domínio de aplicação e conduza o leitor do contexto geral até o problema específico de decisão. Caracterize quem decide, quais decisões precisam ser tomadas, quais dados estão disponíveis, quais dificuldades existem no processo atual e quais consequências decorrem dessas dificuldades.
+
+Explique por que um Sistema de Apoio à Decisão é adequado ao problema. Evite iniciar pela tecnologia. O foco inicial deve estar no \textbf{problema decisório}. Sustente a argumentação com literatura científica, dados, documentos institucionais ou outras evidências.
+
+Ao final da Introdução, o leitor deve compreender claramente:
+(i) qual é o problema;
+(ii) quem é afetado;
+(iii) por que o problema é relevante;
+(iv) por que um SAD pode contribuir; e
+(v) qual lacuna o trabalho pretende tratar.
+
+\subsection{Problema de Pesquisa e Questão de Pesquisa}
+
+Formule explicitamente o problema investigado. Em DSR, é recomendável que a questão esteja relacionada à criação e avaliação de um artefato.
+
+\textbf{Exemplo:}
+``Como projetar, desenvolver e avaliar um Sistema de Apoio à Decisão capaz de apoiar [tipo de usuário] na decisão sobre [decisão], considerando [restrições/variáveis relevantes]?''
+
+\subsection{Justificativa}
+
+Demonstre a relevância prática e científica da pesquisa. Utilize evidências que indiquem que o problema existe e que merece intervenção. Diferencie, quando possível, a relevância para o usuário/organização da contribuição esperada para a área de Sistemas de Apoio à Decisão.
+
+\subsection{Objetivos}
+
+Apresente um objetivo geral e objetivos específicos.
+
+\textbf{Exemplo de objetivo geral:}
+Projetar, desenvolver e avaliar um Sistema de Apoio à Decisão para apoiar [tomador de decisão] em [decisão], utilizando Design Science Research como abordagem metodológica.
+
+\textbf{Exemplos de objetivos específicos:}
+\begin{itemize}[noitemsep]
+    \item compreender o problema decisório e as necessidades dos usuários;
+    \item identificar requisitos funcionais, não funcionais e requisitos de decisão;
+    \item projetar o SAD utilizando UML e o Modelo de Visões 4+1;
+    \item desenvolver um artefato funcional;
+    \item avaliar tecnicamente a solução;
+    \item avaliar sua usabilidade por meio do System Usability Scale (SUS);
+    \item analisar sua aceitação por meio do Technology Acceptance Model (TAM).
+\end{itemize}
+
+\subsection{Organização do Artigo}
+
+Descreva brevemente o conteúdo das seções seguintes. Use apenas um parágrafo.
+
+% ============================================================================
+\section{Fundamentação Teórica}
+\label{sec:fundamentacao}
+
+Esta seção deve apresentar somente os conceitos necessários para compreender o problema, a construção do artefato e sua avaliação. Evite transformar a fundamentação em um glossário.
+
+\subsection{Sistemas de Apoio à Decisão}
+
+Fundamente o conceito de SAD a partir da literatura da área, incluindo Turban e colaboradores. Caracterize o tipo de decisão tratada (estruturada, semiestruturada ou não estruturada), os usuários/tomadores de decisão e os componentes relevantes do SAD.
+
+Quando aplicável, descreva:
+\begin{itemize}[noitemsep]
+    \item subsistema de gerenciamento de dados;
+    \item subsistema de gerenciamento de modelos;
+    \item interface/interação com o usuário;
+    \item conhecimento/regras de negócio;
+    \item processo decisório apoiado pelo sistema.
+\end{itemize}
+
+Explique explicitamente \textbf{por que o sistema desenvolvido pode ser classificado como um SAD}, e não apenas como um sistema de informação convencional.
+
+\subsection{Design Science Research}
+
+Apresente a DSR como abordagem voltada à criação e avaliação de artefatos destinados a solucionar problemas relevantes. Fundamente a abordagem adotada e informe qual processo/ciclo de DSR será operacionalizado no trabalho.
+
+Explique os conceitos de problema, artefato, rigor, relevância, construção e avaliação. Esta fundamentação deve preparar o leitor para a Seção~\ref{sec:metodologia}.
+
+\subsection{Design Centrado no Usuário}
+
+Apresente os princípios de Design Centrado no Usuário utilizados no trabalho. Explique a função de técnicas como identificação de stakeholders, persona, mapa de empatia e, quando pertinente, jornada do usuário.
+
+Deixe claro que essas técnicas serão utilizadas para compreender o tomador de decisão e alimentar a elicitação de requisitos.
+
+\subsection{Engenharia de Software, UML e Modelo de Visões 4+1}
+
+Apresente resumidamente a Engenharia de Software e a UML como suporte à especificação e ao projeto do artefato.
+
+Explique o Modelo de Visões 4+1 de Philippe Kruchten:
+\begin{itemize}[noitemsep]
+    \item \textbf{Visão de Casos de Uso (+1):} cenários e funcionalidades observáveis pelos atores;
+    \item \textbf{Visão Lógica:} estrutura e responsabilidades do domínio;
+    \item \textbf{Visão de Processo:} comportamento, fluxos, concorrência e comunicação;
+    \item \textbf{Visão de Desenvolvimento:} organização dos módulos/componentes de software;
+    \item \textbf{Visão Física:} implantação do sistema em infraestrutura computacional.
+\end{itemize}
+
+Informe que as visões serão representadas por diagramas UML adequados ao contexto do projeto.
+
+\subsection{Avaliação de Sistemas}
+
+Apresente os fundamentos dos instrumentos que serão utilizados posteriormente:
+qualidade técnica de software, SUS e TAM. Não apresente ainda os resultados.
+
+% ============================================================================
+\section{Trabalhos Relacionados}
+\label{sec:relacionados}
+
+Realize uma análise crítica de trabalhos que desenvolveram soluções semelhantes para o mesmo domínio ou problema decisório.
+
+Para cada trabalho, procure identificar: problema, público, tipo de SAD, dados utilizados, método/modelo decisório, tecnologia, estratégia de avaliação e resultados.
+
+Ao final, apresente uma síntese comparativa, preferencialmente em tabela, e explicite a \textbf{lacuna} que diferencia ou justifica o artefato proposto.
+
+% ============================================================================
+\section{Metodologia}
+\label{sec:metodologia}
+
+Este trabalho adota a \textit{Design Science Research} como eixo metodológico. O processo integra técnicas de Design Centrado no Usuário e Engenharia de Software para construir e avaliar um Sistema de Apoio à Decisão.
+
+\textbf{Importante:} esta seção descreve \textbf{como a pesquisa foi conduzida}. Os resultados produzidos por cada etapa devem ser apresentados posteriormente.
+
+\subsection{Visão Geral do Processo de Design Science Research}
+
+Apresente uma figura com o fluxo metodológico adotado. O modelo didático deste trabalho pode ser organizado nas seguintes etapas:
+
+\begin{enumerate}
+    \item identificação e compreensão do problema;
+    \item definição dos objetivos da solução;
+    \item projeto e desenvolvimento do artefato;
+    \item demonstração do SAD;
+    \item avaliação do artefato;
+    \item comunicação dos resultados.
+\end{enumerate}
+
+Explique que o processo pode ser iterativo: resultados de avaliação podem conduzir a revisões no problema, requisitos, projeto ou implementação.
+
+\subsection{Etapa 1 -- Identificação e Compreensão do Problema}
+
+Descreva como o problema decisório foi investigado: revisão de literatura, documentos, entrevistas, observação, questionários, dados organizacionais ou outras fontes.
+
+\subsubsection{Stakeholders}
+
+Identifique os atores relacionados ao processo decisório, destacando o \textbf{tomador de decisão principal}, usuários secundários e demais interessados.
+
+\subsubsection{Persona}
+
+Construa uma persona representativa do usuário/tomador de decisão. Inclua objetivos, contexto, responsabilidades, conhecimentos, necessidades, dificuldades e comportamento relevante para o uso do SAD.
+
+\subsubsection{Mapa de Empatia do Tomador de Decisão}
+
+Apresente o mapa de empatia e explique, no texto, as principais evidências levantadas: o que o usuário pensa e sente, vê, ouve, fala e faz, além de suas dores e ganhos esperados.
+
+Não utilize o mapa apenas como elemento visual: demonstre como suas descobertas influenciaram os requisitos do sistema.
+
+\subsubsection{Processo Decisório Atual}
+
+Descreva como a decisão é tomada atualmente (\textit{AS-IS}). Identifique entradas, atores, critérios, etapas, dificuldades, gargalos e saídas. Quando pertinente, represente o processo por diagrama de atividades, BPMN ou outro modelo adequado.
+
+\subsection{Etapa 2 -- Definição dos Objetivos da Solução}
+
+Converta os problemas identificados em objetivos mensuráveis para o artefato.
+
+\textbf{Exemplo:} reduzir o tempo necessário para analisar alternativas; aumentar a consistência da decisão; consolidar informações dispersas; permitir comparação multicritério; fornecer explicações para recomendações.
+
+Defina critérios que permitam avaliar posteriormente se esses objetivos foram alcançados.
+
+\subsection{Etapa 3 -- Projeto e Desenvolvimento}
+
+Descreva o processo de Engenharia de Software adotado, as tecnologias e a estratégia de desenvolvimento. Explique como ocorreu a passagem das necessidades dos usuários para requisitos, arquitetura, protótipo e implementação.
+
+\subsubsection{Elicitação e Especificação de Requisitos}
+
+Apresente os métodos utilizados para elicitar e validar requisitos.
+
+Organize, preferencialmente:
+\begin{itemize}[noitemsep]
+    \item requisitos funcionais;
+    \item requisitos não funcionais;
+    \item regras de negócio;
+    \item requisitos relacionados ao processo de decisão;
+    \item fontes e requisitos de dados.
+\end{itemize}
+
+Utilize identificadores (RF01, RF02, RNF01 etc.) para permitir rastreabilidade.
+
+\subsubsection{Prototipação e Design da Interface}
+
+Explique como foram produzidos os protótipos e como as necessidades identificadas em persona/mapa de empatia foram refletidas nas interfaces.
+
+\subsubsection{Modelagem UML e Arquitetura 4+1}
+
+Explique quais diagramas serão utilizados em cada visão e justifique sua seleção. Não é obrigatório utilizar todos os diagramas UML existentes.
+
+Sugestão didática:
+\begin{itemize}[noitemsep]
+    \item \textbf{Casos de Uso (+1):} diagrama de casos de uso e descrição dos cenários principais;
+    \item \textbf{Visão Lógica:} diagrama de classes e, quando necessário, diagramas de sequência;
+    \item \textbf{Visão de Processo:} diagramas de atividades e/ou sequência para os fluxos críticos;
+    \item \textbf{Visão de Desenvolvimento:} diagrama de componentes e/ou pacotes;
+    \item \textbf{Visão Física:} diagrama de implantação.
+\end{itemize}
+
+\subsubsection{Mecanismo de Apoio à Decisão}
+
+Esta subseção é essencial para caracterizar o artefato como SAD.
+
+Descreva como o sistema transforma dados em apoio à decisão: modelos analíticos, regras, indicadores, métodos multicritério, simulação, otimização, aprendizado de máquina, análise ``what-if'', recomendação ou outra técnica.
+
+Apresente entradas, processamento, critérios/pesos, saídas e a forma como o resultado é oferecido ao tomador de decisão.
+
+\subsection{Etapa 4 -- Demonstração}
+
+Descreva o cenário no qual o artefato será demonstrado. Defina tarefas representativas e casos de uso que permitam observar o SAD apoiando uma decisão realista.
+
+\subsection{Etapa 5 -- Plano de Avaliação do Artefato}
+
+A avaliação deve responder se o artefato foi construído adequadamente e se produz utilidade no contexto para o qual foi projetado. Recomenda-se combinar diferentes dimensões de avaliação.
+
+\subsubsection{Avaliação Técnica -- Qualidade de Software}
+
+Utilize a ISO/IEC 25010 como referência para estruturar a avaliação técnica. Selecione somente características pertinentes ao artefato e explique como serão operacionalizadas.
+
+Exemplos de características:
+\begin{itemize}[noitemsep]
+    \item adequação funcional;
+    \item eficiência de desempenho;
+    \item confiabilidade;
+    \item segurança;
+    \item compatibilidade;
+    \item manutenibilidade;
+    \item portabilidade.
+\end{itemize}
+
+Para cada característica escolhida, defina uma métrica ou procedimento verificável.
+
+\begin{table}[!ht]
+\centering
+\caption{Exemplo de plano de avaliação técnica}
+\label{tab:avaliacao_tecnica}
+\begin{tabular}{p{3.0cm}p{5.0cm}p{3.0cm}}
+\toprule
+\textbf{Característica} & \textbf{Métrica/Procedimento} & \textbf{Critério} \\
+\midrule
+Adequação funcional & Percentual de requisitos funcionais aprovados nos testes & Definir meta \\
+Desempenho & Tempo de resposta em tarefas críticas & Definir limite \\
+Confiabilidade & Taxa de execução sem falhas nos cenários de teste & Definir meta \\
+Segurança & Verificação dos controles pertinentes ao contexto & Definir critério \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Quando o SAD possuir modelo preditivo, recomendador ou algoritmo específico, inclua também métricas próprias da técnica utilizada. A ISO/IEC 25010 não substitui a validação do modelo decisório.
+
+\subsubsection{Avaliação da Qualidade do Apoio à Decisão}
+
+Defina indicadores relacionados à finalidade do SAD, tais como:
+qualidade/consistência da recomendação, tempo para tomada de decisão, redução de esforço, comparação de alternativas, disponibilidade das informações necessárias e aderência às regras do domínio.
+
+Quando houver um ``resultado correto'' conhecido, utilize métricas adequadas. Quando a decisão depender de julgamento humano, considere cenários, especialistas ou comparação com o processo anterior.
+
+\subsubsection{Avaliação de Usabilidade -- System Usability Scale (SUS)}
+
+A usabilidade será avaliada por meio do \textit{System Usability Scale} (SUS), instrumento proposto por John Brooke em 1986.
+
+O SUS possui dez afirmações respondidas em escala Likert de cinco pontos, de forte discordância a forte concordância. Recomenda-se aplicar o instrumento após os participantes utilizarem o SAD em tarefas representativas.
+
+\textbf{Exemplo de instrumento SUS:}
+\begin{enumerate}
+    \item Eu acho que gostaria de usar este sistema com frequência.
+    \item Eu achei o sistema desnecessariamente complexo.
+    \item Eu achei o sistema fácil de usar.
+    \item Eu acho que precisaria do apoio de uma pessoa com conhecimentos técnicos para usar este sistema.
+    \item Eu achei que as várias funções deste sistema estavam bem integradas.
+    \item Eu achei que havia muita inconsistência neste sistema.
+    \item Eu imagino que a maioria das pessoas aprenderia a usar este sistema rapidamente.
+    \item Eu achei o sistema muito complicado de usar.
+    \item Eu me senti confiante ao usar o sistema.
+    \item Eu precisei aprender muitas coisas antes de conseguir utilizar o sistema.
+\end{enumerate}
+
+\textbf{Cálculo:}
+para os itens ímpares, subtraia 1 da resposta; para os itens pares, subtraia a resposta de 5. Some as dez contribuições e multiplique o resultado por 2,5. O escore final varia de 0 a 100.
+
+Apresente o escore global e, quando pertinente, estatísticas descritivas. Não trate o valor do SUS como uma porcentagem de usabilidade.
+
+\subsubsection{Avaliação de Aceitação -- Technology Acceptance Model (TAM)}
+
+Utilize o TAM para investigar a aceitação do SAD. Como estrutura mínima para a disciplina, avalie:
+\textbf{Utilidade Percebida (UP)}, \textbf{Facilidade de Uso Percebida (FUP)} e \textbf{Intenção de Uso (IU)}.
+
+As afirmações abaixo são exemplos didáticos e devem ser adaptadas ao contexto do SAD e fundamentadas no instrumento/literatura adotados.
+
+\begin{table}[!ht]
+\centering
+\caption{Exemplo de instrumento baseado no TAM}
+\label{tab:tam}
+\begin{tabular}{p{2.0cm}p{9.2cm}}
+\toprule
+\textbf{Construto} & \textbf{Exemplo de afirmação} \\
+\midrule
+UP1 & Utilizar o SAD melhora minha capacidade de tomar a decisão analisada. \\
+UP2 & O SAD torna o processo de decisão mais eficiente. \\
+UP3 & O SAD é útil para as atividades relacionadas a essa decisão. \\
+FUP1 & Aprender a utilizar o SAD é fácil para mim. \\
+FUP2 & Minha interação com o SAD é clara e compreensível. \\
+FUP3 & Considero o SAD fácil de utilizar. \\
+IU1 & Eu pretendo utilizar este SAD quando precisar tomar esse tipo de decisão. \\
+IU2 & Se o SAD estiver disponível, pretendo incorporá-lo ao meu processo de trabalho. \\
+IU3 & Eu recomendaria a utilização do SAD em situações semelhantes. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Utilize uma escala Likert definida previamente (por exemplo, cinco ou sete pontos) e mantenha a mesma escala para todos os itens. Explique como os escores dos construtos serão calculados.
+
+Para análises exploratórias em turmas com amostras pequenas, podem ser apresentadas médias/medianas e dispersão por construto. Se o trabalho pretender testar formalmente relações causais do TAM, deverá utilizar instrumento validado, amostra adequada e técnica estatística compatível.
+
+\subsubsection{Avaliação por Especialistas (Opcional)}
+
+Quando pertinente, especialistas no domínio podem avaliar a correção das regras, indicadores, recomendações ou resultados do SAD. Informe critérios de seleção dos especialistas e o protocolo utilizado.
+
+\subsubsection{Síntese e Triangulação das Evidências}
+
+Integre as diferentes avaliações:
+\begin{itemize}[noitemsep]
+    \item \textbf{ISO/IEC 25010 e testes:} o software atende aos critérios técnicos?
+    \item \textbf{Qualidade do apoio à decisão:} o artefato melhora ou apoia efetivamente a decisão?
+    \item \textbf{SUS:} o sistema apresenta usabilidade adequada?
+    \item \textbf{TAM:} os usuários percebem utilidade, facilidade e intenção de uso?
+    \item \textbf{Especialistas:} o conteúdo/modelo decisório é coerente com o domínio?
+\end{itemize}
+
+A triangulação deve permitir discutir não apenas se ``o sistema funciona'', mas se o artefato é tecnicamente adequado, utilizável, aceito e relevante para o problema.
+
+\subsection{Etapa 6 -- Comunicação}
+
+Informe que os resultados do ciclo de DSR serão consolidados e comunicados no próprio artigo, incluindo descrição do artefato, evidências de avaliação, limitações e contribuição.
+
+% ============================================================================
+\section{Desenvolvimento e Descrição do Artefato}
+\label{sec:artefato}
+
+Nesta seção, apresente os \textbf{resultados da construção}. Diferentemente da metodologia, aqui deve ser mostrado o que efetivamente foi produzido.
+
+\subsection{Visão Geral do SAD}
+
+Apresente nome, objetivo, usuários, contexto de uso, entradas, principais funcionalidades e saídas do sistema.
+
+Inclua uma figura de visão geral, quando possível.
+
+\subsection{Requisitos Obtidos}
+
+Apresente os principais requisitos e demonstre sua relação com as necessidades identificadas no estudo com usuários.
+
+Uma matriz de rastreabilidade pode relacionar:
+\textit{dor/necessidade -> requisito -> funcionalidade -> teste/avaliação}.
+
+\subsection{Arquitetura e Modelagem 4+1}
+
+Apresente os diagramas produzidos para cada visão e explique as principais decisões arquiteturais.
+
+\subsubsection{Visão de Casos de Uso (+1)}
+Apresente atores, casos de uso e cenários principais.
+
+\subsubsection{Visão Lógica}
+Apresente a organização conceitual do sistema, classes/entidades e relações relevantes.
+
+\subsubsection{Visão de Processo}
+Apresente os fluxos dinâmicos críticos, especialmente aqueles relacionados à geração do apoio à decisão.
+
+\subsubsection{Visão de Desenvolvimento}
+Apresente módulos, componentes, camadas, serviços e dependências.
+
+\subsubsection{Visão Física}
+Apresente a implantação do sistema, servidores, banco de dados, dispositivos e integrações relevantes.
+
+\subsection{Implementação do Mecanismo de Apoio à Decisão}
+
+Apresente detalhadamente o mecanismo decisório implementado e demonstre, por exemplo, como uma entrada é transformada em recomendação, classificação, ranking, indicador, simulação ou análise.
+
+\subsection{Interfaces e Fluxo de Uso}
+
+Apresente as principais telas em ordem coerente com a jornada do usuário e com os casos de uso. Explique como as decisões de interface respondem às necessidades identificadas na etapa de DCU.
+
+% Exemplo:
+% \begin{figure}[!ht]
+% \centering
+% \includegraphics[width=.9\linewidth]{images/telas.jpg}
+% \caption{Principais interfaces do Sistema de Apoio à Decisão.}
+% \label{fig:telas}
+% \end{figure}
+
+% ============================================================================
+\section{Avaliação e Resultados}
+\label{sec:resultados}
+
+Apresente os resultados conforme o plano definido na metodologia. Informe participantes, ambiente, tarefas, dados coletados e condições de execução antes de interpretar os resultados.
+
+\subsection{Resultados da Avaliação Técnica}
+
+Apresente os resultados das métricas selecionadas da ISO/IEC 25010, testes funcionais e métricas específicas do mecanismo decisório.
+
+Não escreva apenas ``o sistema funcionou''. Mostre evidências quantitativas ou qualitativas verificáveis.
+
+\subsection{Resultados da Avaliação do Apoio à Decisão}
+
+Demonstre se o SAD atingiu os objetivos definidos para a decisão. Compare, quando possível, o cenário com e sem o artefato ou utilize cenários de referência/especialistas.
+
+\subsection{Resultados do SUS}
+
+Apresente número de participantes, escore SUS individual ou agregado, média/mediana, dispersão e interpretação fundamentada na literatura adotada.
+
+\subsection{Resultados do TAM}
+
+Apresente os resultados por construto (UP, FUP e IU). Utilize tabelas ou gráficos para facilitar a interpretação. Discuta quais dimensões apresentaram maior e menor concordância.
+
+\subsection{Triangulação e Discussão}
+
+Integre os resultados técnicos, decisórios, de usabilidade e aceitação.
+
+Discuta:
+\begin{itemize}[noitemsep]
+    \item quais objetivos da solução foram atingidos;
+    \item quais evidências sustentam a utilidade do artefato;
+    \item possíveis contradições entre as avaliações;
+    \item comparação com trabalhos relacionados;
+    \item implicações para o domínio e para a área de SAD.
+\end{itemize}
+
+% ============================================================================
+\section{Ameaças à Validade e Limitações}
+\label{sec:limitacoes}
+
+Discuta fatores que limitam a interpretação e generalização dos resultados.
+
+Considere, quando pertinente:
+\begin{itemize}[noitemsep]
+    \item tamanho e perfil da amostra;
+    \item seleção dos participantes;
+    \item ambiente de avaliação;
+    \item uso de dados simulados ou históricos;
+    \item maturidade do protótipo;
+    \item limitações das métricas;
+    \item viés dos pesquisadores ou especialistas;
+    \item adaptação de instrumentos;
+    \item limitações do modelo decisório.
+\end{itemize}
+
+Diferencie limitações do artefato de ameaças à validade da avaliação.
+
+% ============================================================================
+\section{Considerações Finais}
+\label{sec:consideracoes}
+
+Retome o problema e o objetivo geral e sintetize como o trabalho os abordou.
+
+Apresente as principais contribuições:
+\begin{itemize}[noitemsep]
+    \item \textbf{artefato:} SAD desenvolvido;
+    \item \textbf{prática:} contribuição para o processo decisório;
+    \item \textbf{conhecimento:} aprendizados, princípios, modelo ou evidências produzidas pela pesquisa.
+\end{itemize}
+
+Resuma os principais resultados da avaliação sem repetir toda a seção anterior. Informe as limitações mais relevantes e proponha trabalhos futuros coerentes com os achados.
+
+% ============================================================================
+\section*{Agradecimentos}
+\label{sec:agradecimentos}
+
+Agradeça às pessoas e instituições que contribuíram com a pesquisa, mas não se qualificam para autoria. Informe financiamentos e apoios institucionais quando exigido pelo evento ou periódico.
+
+% ============================================================================
+% REFERÊNCIAS SUGERIDAS PARA O ARQUIVO referencias.bib
+%
+% O estudante deve consultar as obras originais e preencher os dados
+% bibliográficos completos no arquivo .bib.
+%
+% Sugestões de autores/obras a fundamentar:
+% - Turban et al. -- Decision Support / Business Intelligence / Analytics.
+% - Hevner et al. -- Design Science in Information Systems Research.
+% - Peffers et al. -- Design Science Research Methodology (DSRM).
+% - Kruchten -- Architectural Blueprints: The 4+1 View Model of Software Architecture.
+% - Brooke -- System Usability Scale (SUS), 1986.
+% - Davis -- Technology Acceptance Model (TAM).
+% - ISO/IEC 25010 -- Systems and software Quality Requirements and Evaluation (SQuaRE).
+% - Referências de Design Centrado no Usuário e UML adotadas na disciplina.
+% ============================================================================
+
+\bibliographystyle{sbc}
+\bibliography{referencias}
+
+\end{document}
